@@ -10,13 +10,13 @@ import Image from "next/image" // Import Image component
 export function Resume() {
   const handleDownload = () => {
     const link = document.createElement("a")
-    link.href = "/Resume Raghav.pdf" // Updated to new file
+    link.href = "/Resume-Raghav.pdf" // Ensure this matches the exact filename
     link.download = "Raghav_Ahuja_Resume.pdf"
     link.click()
   }
 
   const handlePreview = () => {
-    window.open("/Resume Raghav.pdf", "_blank") // Updated to new file
+    window.open("/Resume-Raghav.pdf", "_blank") // Ensure this matches the exact filename
   }
 
   return (
