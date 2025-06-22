@@ -10,13 +10,13 @@ import Image from "next/image" // Import Image component
 export function Resume() {
   const handleDownload = () => {
     const link = document.createElement("a")
-    link.href = "/Resume-Raghav.pdf" // This path currently points to a removed file
+    link.href = "/resume-raghav.pdf" // Corrected path
     link.download = "Raghav_Ahuja_Resume.pdf"
     link.click()
   }
 
   const handlePreview = () => {
-    window.open("/Resume-Raghav.pdf", "_blank") // This path currently points to a removed file
+    window.open("/resume-raghav.pdf", "_blank") // Corrected path
   }
 
   return (
