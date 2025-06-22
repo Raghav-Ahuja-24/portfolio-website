@@ -10,13 +10,13 @@ import Image from "next/image" // Import Image component
 export function Resume() {
   const handleDownload = () => {
     const link = document.createElement("a")
-    link.href = "/resume-raghav.pdf" // Pointing to the correct, stable path
+    link.href = "https://drive.google.com/file/d/1a7X-p_t3qh8AF1AUZFBxt1YIWmBvJZjy/view?usp=drive_link"
     link.download = "Raghav_Ahuja_Resume.pdf"
     link.click()
   }
 
   const handlePreview = () => {
-    window.open("/resume-raghav.pdf", "_blank") // Pointing to the correct, stable path
+    window.open("https://drive.google.com/file/d/1a7X-p_t3qh8AF1AUZFBxt1YIWmBvJZjy/view?usp=drive_link", "_blank")
   }
 
   return (
