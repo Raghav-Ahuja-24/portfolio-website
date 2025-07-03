@@ -63,64 +63,84 @@ export function Projects() {
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.15}>
           {projects.map((project, index) => (
             <StaggerItem key={index}>
-              <Card className="bg-[#1a1f2e]/80 backdrop-blur-sm overflow-hidden group hover:border-white/20 transition-all duration-300 hover:scale-105">
-                <div className="relative overflow-hidden h-[200px] flex items-center justify-center bg-white">
-                  <div className={`absolute inset-0 ${project.gradient} opacity-20`}></div>
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={project.width}
-                    height={project.height}
-                    className="object-contain group-hover:scale-110 transition-transform duration-500 relative z-10"
-                  />
-                </div>
-                <CardContent className="p-6 pt-10">
-                  <h3 className="text-xl font-medium text-white mb-2 group-hover:gradient-text transition-all duration-300">
-                    {project.title}
-                  </h3>
-                  {project.role && <p className="text-sm text-blue-400 mb-3 font-medium">Role: {project.role}</p>}
-                  <p className="text-gray-300 text-sm mb-4 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={tech}
-                        className={`px-2 py-1 text-white text-xs rounded ${
-                          techIndex % 3 === 0
-                            ? "gradient-bg-1"
-                            : techIndex % 3 === 1
-                              ? "gradient-bg-3"
-                              : "gradient-bg-2"
-                        }`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
+              <div className="relative p-[2px] rounded-lg animated-gradient group hover:scale-105 transition-all duration-300">
+                <Card className="bg-[#1a1f2e]/80 backdrop-blur-sm overflow-hidden border-0 h-full">
+                  <div className="relative overflow-hidden h-[200px] flex items-center justify-center bg-white">
+                    <div className={`absolute inset-0 ${project.gradient} opacity-20`}></div>
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      width={project.width}
+                      height={project.height}
+                      className="object-contain group-hover:scale-110 transition-transform duration-500 relative z-10"
+                    />
                   </div>
-                  <div className="flex gap-3">
-                    <Button
-                      asChild
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 bg-transparent border-white/20 text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300"
-                    >
-                      <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="sm"
-                      className={`flex-1 ${project.gradient} hover:scale-105 transition-all duration-300 text-white border-0`}
-                    >
-                      <Link href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Live
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-6 pt-10">
+                    <h3 className="text-xl font-medium text-white mb-2 group-hover:gradient-text transition-all duration-300">
+                      {project.title}
+                    </h3>
+                    {project.role && <p className="text-sm text-blue-400 mb-3 font-medium">Role: {project.role}</p>}
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.map((tech, techIndex) => (
+                        <span
+                          key={tech}
+                          className={`px-2 py-1 text-white text-xs rounded ${
+                            techIndex % 3 === 0
+                              ? "gradient-bg-1"
+                              : techIndex % 3 === 1
+                                ? "gradient-bg-3"
+                                : "gradient-bg-2"
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3">
+                      <div className={`p-[3px] rounded-lg ${project.gradient} flex-1`}>
+                        <div className="bg-gray-900 rounded-lg">
+                          <Button
+                            asChild
+                            size="sm"
+                            variant="outline"
+                            className="w-full bg-transparent border-white/20 text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 h-10"
+                          >
+                            <Link
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center"
+                            >
+                              <Github className="w-4 h-4 mr-2" />
+                              Code
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                      <div className={`p-[3px] rounded-lg ${project.gradient} flex-1`}>
+                        <div className="bg-gray-900 rounded-lg">
+                          <Button
+                            asChild
+                            size="sm"
+                            className={`w-full ${project.gradient} hover:scale-105 transition-all duration-300 text-white border-0 h-10`}
+                          >
+                            <Link
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Live
+                            </Link>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </StaggerItem>
           ))}
         </StaggerContainer>

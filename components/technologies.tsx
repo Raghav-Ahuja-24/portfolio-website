@@ -70,9 +70,13 @@ export function Technologies() {
           {techCategories.map((category, index) => (
             <StaggerItem key={category.title}>
               <Card
-                className={`bg-[#1a1f2e]/80 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300 hover:${category.glow} group relative z-20`}
+                className={`bg-[#1a1f2e]/80 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300 hover:${category.glow} group relative z-20 hover:shadow-2xl hover:shadow-purple-500/20 overflow-hidden`}
               >
-                <CardContent className="p-6">
+                {/* Inner gradient overlay for visual effect */}
+                <div
+                  className={`absolute inset-0 ${category.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}
+                ></div>
+                <CardContent className="p-6 relative z-10">
                   <div
                     className={`w-12 h-12 ${category.gradient} rounded-lg mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
                   >

@@ -81,14 +81,21 @@ export function Certificates() {
         <StaggerContainer className="space-y-8 max-w-4xl mx-auto" staggerDelay={0.2}>
           {certificates.map((cert, index) => (
             <StaggerItem key={index}>
-              <Card className="bg-[#1a1f2e]/80 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300 group">
-                <CardContent className="p-8">
+              <Card className="bg-[#1a1f2e]/80 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300 group hover:shadow-2xl hover:shadow-blue-500/20">
+                <CardContent className="p-8 relative z-10">
+                  {/* Inner gradient overlay for visual effect */}
+                  <div
+                    className={`absolute inset-0 ${cert.gradient} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}
+                  ></div>
                   <div className="flex items-start gap-6">
-                    <div
-                      className={`w-16 h-16 ${cert.gradient} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
+                    <Link
+                      href={cert.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-16 h-16 ${cert.gradient} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 cursor-pointer hover:scale-110`}
                     >
                       <Award className="w-8 h-8 text-white" />
-                    </div>
+                    </Link>
                     <div className="flex-1">
                       <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                         <div>
@@ -114,12 +121,17 @@ export function Certificates() {
                           </span>
                         ))}
                       </div>
-                      <div className={`inline-block p-[2px] rounded-lg ${cert.gradient}`}>
+                      <div className={`inline-block p-[3px] rounded-lg ${cert.gradient}`}>
                         <Button
                           asChild
-                          className="bg-gray-900 hover:bg-gray-800 text-white border-0 hover:scale-105 transition-all duration-300"
+                          className="bg-gray-900 hover:bg-gray-800 text-white border-0 hover:scale-105 transition-all duration-300 flex items-center justify-center h-12 px-6"
                         >
-                          <Link href={cert.certificateUrl} target="_blank" rel="noopener noreferrer">
+                          <Link
+                            href={cert.certificateUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center"
+                          >
                             <ExternalLink className="w-4 h-4 mr-2" />
                             View Certificate
                           </Link>
