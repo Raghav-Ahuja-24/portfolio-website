@@ -27,8 +27,8 @@ export function Projects() {
       description:
         "Expert-level deep learning project that predicts heart conditions by analyzing heartbeat audio files (.wav/.mp3) with 100% test accuracy. Uses CNNs and LSTM/GRU networks with PhysioNet datasets, advanced audio preprocessing, MFCC feature extraction, and real-time visualization dashboard with confidence scores and educational content.",
       image: "/images/cardiosonic-logo.png",
-      width: 300, // Keep original intrinsic width for optimization
-      height: 300, // Keep original intrinsic height for optimization
+      width: 300,
+      height: 300,
       technologies: ["Python", "TensorFlow", "CNN", "LSTM", "Flask", "Librosa", "NumPy", "Scikit-learn"],
       githubUrl: "https://github.com/dark-Warrior-2412",
       liveUrl: "https://example.com",
@@ -40,8 +40,8 @@ export function Projects() {
       description:
         "Developed 'Aakashvaani,' a Python-based voice assistant capable of performing basic operations like playing music/videos, web searches, setting alarms, and providing weather updates. It converts user voice commands to text, processes requests, and delivers both text and voice responses. The project integrates various Python modules including `pyttsx3` for text-to-speech, `speech_recognition` for voice input, `datetime`, `wikipedia`, `webbrowser`, `os`, `smtplib`, `googlesearch`, and `bs4` for comprehensive functionality.",
       image: "/images/aakashvaani-logo.png",
-      width: 300, // Keep original intrinsic width for optimization
-      height: 300, // Keep original intrinsic height for optimization
+      width: 300,
+      height: 300,
       technologies: ["Python", "pyttsx3", "Speech Recognition", "Web Scraping", "Automation"],
       githubUrl: "https://github.com/dark-Warrior-2412",
       liveUrl: "https://example.com",
@@ -65,8 +65,6 @@ export function Projects() {
             <StaggerItem key={index}>
               <Card className="bg-[#1a1f2e]/80 backdrop-blur-sm overflow-hidden group hover:border-white/20 transition-all duration-300 hover:scale-105">
                 <div className="relative overflow-hidden h-[200px] flex items-center justify-center bg-white">
-                  {" "}
-                  {/* Increased height here */}
                   <div className={`absolute inset-0 ${project.gradient} opacity-20`}></div>
                   <Image
                     src={project.image || "/placeholder.svg"}

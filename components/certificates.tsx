@@ -19,6 +19,33 @@ export function Certificates() {
       gradient: "gradient-bg-1",
     },
     {
+      title: "Google Data Analytics Professional Certificate",
+      issuer: "Google (Coursera)",
+      date: "December 2024",
+      description:
+        "Comprehensive specialization covering the entire data analytics process from data collection to visualization. Gained hands-on experience with R, SQL, Tableau, and spreadsheets for data cleaning, analysis, and presentation.",
+      skills: ["Data Analytics", "R Programming", "SQL", "Tableau", "Data Visualization", "Statistical Analysis"],
+      certificateUrl: "https://coursera.org/verify/specialization/5FGKY446BSQH",
+      gradient: "gradient-bg-4",
+    },
+    {
+      title: "Computer Communications Specialization",
+      issuer: "University of California (Coursera)",
+      date: "January 2025",
+      description:
+        "Advanced specialization focusing on computer networking, communication protocols, and distributed systems. Covered topics including network architecture, TCP/IP protocols, wireless communications, and network security fundamentals.",
+      skills: [
+        "Computer Networks",
+        "TCP/IP",
+        "Network Security",
+        "Wireless Communication",
+        "Protocol Design",
+        "Network Architecture",
+      ],
+      certificateUrl: "https://coursera.org/verify/specialization/COMPUTER_COMM_CERT",
+      gradient: "gradient-bg-5",
+    },
+    {
       title: "Operating Systems and You: Becoming a Power User",
       issuer: "Google (Coursera)",
       date: "May 2025",
@@ -87,16 +114,17 @@ export function Certificates() {
                           </span>
                         ))}
                       </div>
-                      <Button
-                        asChild
-                        size="sm"
-                        className={`${cert.gradient} hover:scale-105 transition-all duration-300 text-white border-0`}
-                      >
-                        <Link href={cert.certificateUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4 mr-2" />
-                          View Certificate
-                        </Link>
-                      </Button>
+                      <div className={`inline-block p-[2px] rounded-lg ${cert.gradient}`}>
+                        <Button
+                          asChild
+                          className="bg-gray-900 hover:bg-gray-800 text-white border-0 hover:scale-105 transition-all duration-300"
+                        >
+                          <Link href={cert.certificateUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            View Certificate
+                          </Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
