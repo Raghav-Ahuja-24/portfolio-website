@@ -10,10 +10,11 @@ export function Header() {
 
   const navItems = [
     { href: "#about", label: "About" },
-    { href: "#technologies", label: "Technologies" },
+    { href: "#skills", label: "Skills" },
     { href: "#certificates", label: "Certificates" },
     { href: "#education", label: "Education" },
     { href: "#projects", label: "Projects" },
+    { href: "#research", label: "Research" },
     { href: "#resume", label: "Resume" },
     { href: "#contact", label: "Contact" },
   ]
@@ -23,7 +24,7 @@ export function Header() {
   const totalItems = navItems.length
 
   return (
-    <header className="fixed top-0 w-full gradient-bg-1/90 backdrop-blur-sm z-50">
+    <header className="fixed top-0 w-full gradient-bg-1/90 backdrop-blur-sm z-50 isolate">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex justify-end items-center py-6">
           {/* Desktop Navigation */}

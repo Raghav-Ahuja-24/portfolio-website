@@ -5,9 +5,11 @@ import { Technologies } from "@/components/technologies"
 import { Certificates } from "@/components/certificates"
 import { Education } from "@/components/education"
 import { Projects } from "@/components/projects"
+import { ResearchExperience } from "@/components/research-experience"
 import { Resume } from "@/components/resume"
 import { Contact } from "@/components/contact"
 import { ScrollProgress } from "@/components/animations/scroll-progress"
+import { AiAssistantWidget } from "@/components/ai-assistant/ai-assistant-widget"
 
 export default function Home() {
   return (
@@ -21,9 +23,11 @@ export default function Home() {
         <Certificates />
         <Education />
         <Projects />
+        <ResearchExperience />
         <Resume />
         <Contact />
       </main>
+      <AiAssistantWidget />
     </div>
   )
 }

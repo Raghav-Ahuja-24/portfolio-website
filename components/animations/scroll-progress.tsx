@@ -1,8 +1,10 @@
 "use client"
 
 import { motion, useScroll, useSpring } from "framer-motion"
+import { useHasMounted } from "@/hooks/use-has-mounted"
 
 export function ScrollProgress() {
+  const mounted = useHasMounted()
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -10,5 +12,12 @@ export function ScrollProgress() {
     restDelta: 0.001,
   })
 
-  return <motion.div className="fixed top-0 left-0 right-0 h-1 z-50 origin-left gradient-bg-1" style={{ scaleX }} />
+  if (!mounted) return null
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 z-50 origin-left gradient-bg-1"
+      style={{ scaleX }}
+    />
+  )
 }

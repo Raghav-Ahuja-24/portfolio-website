@@ -2,9 +2,9 @@
 
 import type React from "react"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { useHasMounted } from "@/hooks/use-has-mounted"
 
 interface StaggerContainerProps {
   children: React.ReactNode
@@ -14,6 +14,7 @@ interface StaggerContainerProps {
 
 export function StaggerContainer({ children, className, staggerDelay = 0.1 }: StaggerContainerProps) {
   const ref = useRef(null)
+  const mounted = useHasMounted()
   const isInView = useInView(ref, { margin: "-50px" })
 
   const containerVariants = {
@@ -31,7 +32,7 @@ export function StaggerContainer({ children, className, staggerDelay = 0.1 }: St
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={mounted && isInView ? "visible" : "hidden"}
       variants={containerVariants}
       className={className}
     >

@@ -40,6 +40,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    scrollbar-gutter: stable;
   }
 }
 
@@ -74,6 +75,10 @@ body {
 
 .gradient-bg-6 {
   background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.gradient-bg-7 {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
 }
 
 .gradient-text {
@@ -163,4 +168,190 @@ body {
 
 .glow-pink {
   box-shadow: 0 0 20px rgba(240, 147, 251, 0.3);
+}
+
+/* ── Void Rift portrait portal ── */
+.void-portal-clip {
+  clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%);
+  border-radius: 4px;
+}
+
+.void-rift-aura {
+  background: radial-gradient(circle, rgba(100, 180, 255, 0.25) 0%, rgba(140, 80, 255, 0.12) 40%, transparent 70%);
+}
+
+.void-mesh-bg {
+  background: linear-gradient(135deg, #0f1628 0%, #1a1040 35%, #0d2845 70%, #120a20 100%);
+  background-size: 300% 300%;
+  animation: voidMeshDrift 12s ease infinite;
+  mask-image: linear-gradient(90deg, transparent 38%, black 52%, black 100%);
+}
+
+.void-rift-core {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.95) 18%,
+    rgba(200, 240, 255, 1) 50%,
+    rgba(180, 140, 255, 0.9) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 60px rgba(140, 200, 255, 0.5);
+  animation: voidRiftPulse 3s ease-in-out infinite;
+}
+
+.void-rift-glow {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(180, 220, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent
+  );
+  filter: blur(8px);
+  animation: voidRiftPulse 3s ease-in-out infinite;
+}
+
+.void-rift-halo {
+  background: radial-gradient(ellipse at center, rgba(180, 220, 255, 0.18) 0%, transparent 70%);
+  filter: blur(16px);
+}
+
+.void-scan-line {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 48%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 52%,
+    transparent 100%
+  );
+  background-size: 100% 200%;
+  animation: voidScanSweep 6s linear infinite;
+}
+
+.void-shard {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.15) 0%, rgba(140, 200, 255, 0.08) 50%, transparent 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  clip-path: polygon(50% 0%, 100% 38%, 80% 100%, 20% 100%, 0% 38%);
+}
+
+.void-portrait-cutout {
+  mix-blend-mode: lighten;
+  filter: drop-shadow(0 0 28px rgba(180, 230, 255, 0.4)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.18))
+    drop-shadow(0 28px 36px rgba(0, 0, 0, 0.65));
+}
+
+.void-floor-reflection {
+  background: radial-gradient(ellipse, rgba(180, 220, 255, 0.25) 0%, transparent 70%);
+}
+
+.void-chromatic-edge {
+  box-shadow:
+    inset 2px 0 0 rgba(255, 80, 80, 0.08),
+    inset -2px 0 0 rgba(80, 180, 255, 0.08),
+    inset 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.void-blink {
+  animation: voidBlink 2s step-end infinite;
+}
+
+@keyframes voidMeshDrift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes voidRiftPulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes voidScanSweep {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* ── AI Knowledge Matrix (Skills) ── */
+.skills-hex-clip {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.skills-pent-clip {
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.skills-aurora {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.04) 0%,
+    rgba(79, 172, 254, 0.03) 40%,
+    rgba(240, 147, 251, 0.03) 70%,
+    rgba(67, 233, 123, 0.02) 100%
+  );
+  background-size: 200% 200%;
+  animation: skillsAurora 20s ease infinite;
+}
+
+.skills-scan-line {
+  animation: skillsScanLine 3.5s linear infinite;
+}
+
+.skills-streak {
+  animation: skillsStreak 8s ease-in-out infinite;
+}
+
+@keyframes skillsAurora {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes skillsScanLine {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes skillsStreak {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(12px);
+  }
 }

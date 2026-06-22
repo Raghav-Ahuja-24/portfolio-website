@@ -1,10 +1,10 @@
 import { Linkedin, Github, Instagram } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import { FadeIn } from "@/components/animations/fade-in"
 import { SlideIn } from "@/components/animations/slide-in"
 import { Mail } from "lucide-react"
 import { FloatingTechIcons } from "@/components/floating-tech-icons"
+import { HeroPortrait } from "@/components/hero-portrait"
 
 export function Hero() {
   return (
@@ -87,19 +87,7 @@ export function Hero() {
           </div>
 
           <SlideIn direction="right" delay={0.2}>
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                <div className="absolute inset-0 gradient-bg-1 rounded-lg blur-xl opacity-30 animate-pulse"></div>
-                <Image
-                  src="/images/raghav-photo.png"
-                  alt="Raghav Ahuja"
-                  width={400}
-                  height={500}
-                  className="rounded-lg object-cover relative z-10 border-2 border-white/10"
-                  style={{ objectPosition: "center 35%" }}
-                />
-              </div>
-            </div>
+            <HeroPortrait />
           </SlideIn>
         </div>
       </div>

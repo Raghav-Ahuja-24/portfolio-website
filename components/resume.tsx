@@ -5,18 +5,21 @@ import { Button } from "@/components/ui/button"
 import { Download, Eye, FileText } from "lucide-react"
 import { FadeIn } from "@/components/animations/fade-in"
 import { SlideIn } from "@/components/animations/slide-in"
-import Image from "next/image" // Import Image component
+import Image from "next/image"
+
+const RESUME_PDF = "/RESUME_RAGHAV_AHUJA.pdf"
+const RESUME_PREVIEW = "/images/raghav-ahuja-resume-preview.png"
 
 export function Resume() {
   const handleDownload = () => {
     const link = document.createElement("a")
-    link.href = "/RESUME_RAGHAV_AHUJA.pdf"
+    link.href = RESUME_PDF
     link.download = "RESUME_RAGHAV_AHUJA.pdf"
     link.click()
   }
 
   const handlePreview = () => {
-    window.open("/RESUME_RAGHAV_AHUJA.pdf", "_blank")
+    window.open(RESUME_PDF, "_blank")
   }
 
   return (
@@ -82,16 +85,31 @@ export function Resume() {
             <Card className="bg-[#1a1f2e]/80 backdrop-blur-sm border-white/10 hover:border-white/20 transition-all duration-300 group">
               <CardContent className="p-8">
                 <div className="text-center space-y-6">
-                  <div className="relative w-full h-64 mb-6 flex items-center justify-center">
-                    {" "}
-                    {/* Adjusted for image */}
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={handlePreview}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault()
+                        handlePreview()
+                      }
+                    }}
+                    className="relative w-full aspect-[3/4] max-h-[420px] rounded-lg border border-white/10 overflow-hidden bg-white shadow-lg group/preview cursor-pointer"
+                    aria-label="Open resume preview"
+                  >
                     <Image
-                      src="/images/raghav-ahuja-resume-preview.png"
+                      src={RESUME_PREVIEW}
                       alt="Raghav Ahuja Resume Preview"
-                      layout="fill"
-                      objectFit="contain"
-                      className="rounded-lg border border-white/10 shadow-lg"
+                      fill
+                      className="object-contain object-top p-1"
+                      sizes="(max-width: 768px) 100vw, 400px"
                     />
+                    <div className="absolute inset-0 bg-transparent group-hover/preview:bg-black/10 transition-colors flex items-end justify-center pb-4 opacity-0 group-hover/preview:opacity-100">
+                      <span className="text-xs text-white bg-black/60 px-3 py-1.5 rounded-full backdrop-blur-sm">
+                        Click to open full preview
+                      </span>
+                    </div>
                   </div>
 
                   <div>

@@ -2,9 +2,9 @@
 
 import type React from "react"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { useHasMounted } from "@/hooks/use-has-mounted"
 
 interface SlideInProps {
   children: React.ReactNode
@@ -15,6 +15,7 @@ interface SlideInProps {
 
 export function SlideIn({ children, direction = "left", delay = 0, className }: SlideInProps) {
   const ref = useRef(null)
+  const mounted = useHasMounted()
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const variants = {
@@ -32,7 +33,7 @@ export function SlideIn({ children, direction = "left", delay = 0, className }: 
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={mounted && isInView ? "visible" : "hidden"}
       variants={variants}
       transition={{
         duration: 0.8,

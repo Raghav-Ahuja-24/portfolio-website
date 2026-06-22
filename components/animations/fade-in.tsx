@@ -2,9 +2,9 @@
 
 import type React from "react"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
+import { useHasMounted } from "@/hooks/use-has-mounted"
 
 interface FadeInProps {
   children: React.ReactNode
@@ -15,6 +15,7 @@ interface FadeInProps {
 
 export function FadeIn({ children, delay = 0, direction = "up", className }: FadeInProps) {
   const ref = useRef(null)
+  const mounted = useHasMounted()
   const isInView = useInView(ref, { margin: "-100px" })
 
   const variants = {
@@ -34,7 +35,7 @@ export function FadeIn({ children, delay = 0, direction = "up", className }: Fad
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={mounted && isInView ? "visible" : "hidden"}
       variants={variants}
       transition={{
         duration: 1.0,

@@ -1,8 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useHasMounted } from "@/hooks/use-has-mounted"
 
 export function FloatingTechIcons() {
+  const mounted = useHasMounted()
   const technologies = [
     {
       name: "React",
@@ -163,9 +165,9 @@ export function FloatingTechIcons() {
           }}
           custom={index}
           variants={floatingVariants}
-          animate="animate"
+          animate={mounted ? "animate" : undefined}
           initial={{ opacity: 0, scale: 0 }}
-          whileInView={{ opacity: 0.7, scale: 1 }}
+          whileInView={mounted ? { opacity: 0.7, scale: 1 } : undefined}
           transition={{
             delay: 1.7,
             duration: 1,
