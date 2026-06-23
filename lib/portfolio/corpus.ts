@@ -30,7 +30,48 @@ export const PROFILE = {
   github: "https://github.com/dark-Warrior-2412",
   linkedin: "https://www.linkedin.com/in/raghav-ahuja-46ba58290/",
   summary:
-    "Second-year B.Tech CSE student at Bennett University passionate about Artificial Intelligence, machine learning, deep learning, and modern web technologies. Experienced with neural networks (LSTM, GRU, CNN), NLP, full-stack development, and data analytics.",
+    "Third-year B.Tech CSE student at Bennett University passionate about Artificial Intelligence, machine learning, deep learning, generative AI, and modern web technologies. Experienced with neural networks (LSTM, GRU, CNN), computer vision, NLP, RAG, full-stack development, and data analytics.",
+}
+
+export type AboutHighlight = "gradient-text" | "gradient-text-2" | "gradient-text-3"
+
+export type AboutSegment = string | { text: string; highlight: AboutHighlight }
+
+/** Shared About copy — rendered on the site and indexed by RAG */
+export const ABOUT_PARAGRAPHS: AboutSegment[][] = [
+  [
+    "Hello! I'm ",
+    { text: "Raghav Ahuja", highlight: "gradient-text" },
+    ", currently studying my third year of ",
+    { text: "B.Tech Computer Science and Engineering (AI)", highlight: "gradient-text-2" },
+    " at ",
+    { text: "Bennett University, India", highlight: "gradient-text-3" },
+    ". I have a passion for developing systems which are both innovative in their approach and usable in practical scenarios. My interests include ",
+    { text: "Artificial Intelligence, Machine Learning, Computer Vision, Data Analytics, and Full-Stack Development", highlight: "gradient-text" },
+    ".",
+  ],
+  [
+    "What intrigues me the most about technology is the way we turn ideas into something usable by people. No matter if it involves training a neural network, creating a user experience, data analysis, software development – I love the process of discovering the connection between different domains of technology to solve various problems.",
+  ],
+  [
+    "During all these years of experience, I've grown an interest in ",
+    { text: "neural networks, generative AI, natural language processing, large language models, and retrieval-augmented generation (RAG) systems", highlight: "gradient-text-2" },
+    ". I like learning and working with different technologies and AI techniques, taking up new challenges in research and development of systems and applications.",
+  ],
+  [
+    "Alongside with technical skills, I consider curiosity, adaptability, and continuous self-improvement to be important. It is nice for me to mentor other students, to work on bold ideas, and to take part in projects with a tangible outcome.",
+  ],
+  [
+    "When I'm not coding or learning, you'll often find me exploring new AI advancements, working on personal projects, playing cricket, going to the gym, or finding new ways to turn ideas into reality.",
+  ],
+]
+
+function aboutSegmentText(segment: AboutSegment): string {
+  return typeof segment === "string" ? segment : segment.text
+}
+
+export function getAboutContent(): string {
+  return ABOUT_PARAGRAPHS.map((paragraph) => paragraph.map(aboutSegmentText).join("")).join("\n\n")
 }
 
 export const PROJECTS: PortfolioProject[] = [
@@ -228,8 +269,7 @@ export function buildCorpusDocuments(): CorpusDocument[] {
       id: "about",
       source: "about",
       title: "About",
-      content:
-        "Raghav is a B.Tech CSE student at Bennett University passionate about AI, ML, deep learning, and web technologies. Interests include neural networks, GRU, LSTM for sequence modeling, NLP, and full-stack development.",
+      content: getAboutContent(),
     },
   ]
 

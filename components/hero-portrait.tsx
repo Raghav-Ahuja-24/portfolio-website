@@ -5,8 +5,8 @@ import Image from "next/image"
 import { motion, useSpring, useTransform } from "framer-motion"
 import { useHasMounted } from "@/hooks/use-has-mounted"
 
-/** Drop your transparent PNG (black coat) at public/images/raghav-portrait.png */
-const PORTRAIT_SRC = "/images/raghav-portrait.png"
+/** Drop your transparent PNG (black coat) at public/images/hologram-avatar.png */
+const PORTRAIT_SRC = "/images/hologram-avatar.png"
 
 const SHARDS = [
   { id: 1, top: "8%", left: "-4%", size: 28, rotate: -24, delay: 0 },

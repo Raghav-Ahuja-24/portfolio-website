@@ -1,4 +1,4 @@
-import { Linkedin, Github, Instagram } from "lucide-react"
+import { Linkedin, Github } from "lucide-react"
 import Link from "next/link"
 import { FadeIn } from "@/components/animations/fade-in"
 import { SlideIn } from "@/components/animations/slide-in"
@@ -24,7 +24,7 @@ export function Hero() {
           <div className="space-y-8">
             <SlideIn direction="left">
               <div>
-                <h1 className="text-6xl lg:text-7xl font-thin text-white mb-4 tracking-wide">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-thin text-white mb-4 tracking-wide">
                   <span className="gradient-text">Raghav</span> <span className="gradient-text-2">Ahuja</span>
                 </h1>
                 <p className="text-xl font-light">
@@ -52,15 +52,6 @@ export function Hero() {
                 >
                   <Github className="h-6 w-6" />
                   <span className="sr-only">GitHub</span>
-                </Link>
-                <Link
-                  href="https://www.instagram.com/raghavahuja2412/"
-                  className="text-gray-400 hover:text-pink-400 transition-all duration-300 hover:scale-110"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Instagram className="h-6 w-6" />
-                  <span className="sr-only">Instagram</span>
                 </Link>
                 <Link
                   href="https://x.com/RaghavAhuja2412"

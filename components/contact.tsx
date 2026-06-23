@@ -1,16 +1,9 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Mail, MapPin } from "lucide-react"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
+import { Mail, MapPin, Send, MessageSquare, Terminal, Clock, CheckCircle2, Cpu, Rocket } from "lucide-react"
 import { FadeIn } from "@/components/animations/fade-in"
-import { SlideIn } from "@/components/animations/slide-in"
 
 // Custom WhatsApp Icon Component
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -25,6 +18,8 @@ export function Contact() {
     email: "",
     message: "",
   })
+
+  const [isFocused, setIsFocused] = useState<string | null>(null)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -49,194 +44,230 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-6 lg:px-12 bg-[#0f1419] relative overflow-hidden">
-      {/* Colorful background elements */}
-      <div className="absolute top-10 left-10 w-72 h-72 gradient-bg-1 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-      <div className="absolute top-20 right-20 w-64 h-64 gradient-bg-2 rounded-full blur-3xl opacity-15 animate-pulse delay-1000"></div>
-      <div className="absolute bottom-10 left-20 w-80 h-80 gradient-bg-3 rounded-full blur-3xl opacity-10 animate-pulse delay-2000"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 gradient-bg-4 rounded-full blur-3xl opacity-15 animate-pulse delay-500"></div>
+    <section id="contact" className="py-24 px-6 lg:px-12 bg-[#03050a] relative overflow-hidden min-h-screen flex flex-col justify-center">
+      {/* Deep Space Background Glows */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-violet-900/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-900/10 rounded-full blur-[150px] pointer-events-none" />
+      
+      {/* Subtle Grid */}
+      <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-[0.02] pointer-events-none" />
 
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 animated-gradient opacity-5"></div>
-
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        
         <FadeIn>
-          <h2 className="text-4xl font-light text-white mb-4 text-center">
-            <span className="gradient-text-2">Get In Touch</span>
-          </h2>
-          <p className="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? Let's collaborate and create something amazing together!
-          </p>
+          <div className="flex flex-col items-center mb-16 relative">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-mono uppercase tracking-widest mb-4 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
+              <MessageSquare className="w-3.5 h-3.5" /> Comm Channel Open
+            </div>
+            <h2 className="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-500 tracking-tight text-center drop-shadow-sm">
+              Let's Connect
+            </h2>
+          </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <SlideIn direction="left" delay={0.2}>
-            <div className="space-y-8">
-              <Card className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 backdrop-blur-sm border-white/10 hover:border-purple-400/30 transition-all duration-300 group">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-medium text-white mb-6 gradient-text-3">Let's Connect!</h3>
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    I'm always excited to discuss new opportunities, innovative projects, and potential collaborations.
-                    Whether you're looking for an AI enthusiast, a full-stack developer, or just want to chat about
-                    technology, I'd love to hear from you!
-                  </p>
-
-                  <div className="space-y-6">
-                    <div className="flex items-center space-x-4 group/item hover:scale-105 transition-transform duration-300">
-                      <a
-                        href="mailto:raghavahuja2412@gmail.com"
-                        className="w-12 h-12 gradient-bg-1 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300 cursor-pointer"
-                      >
-                        <Mail className="w-6 h-6 text-white" />
-                      </a>
-                      <div>
-                        <p className="text-gray-400 text-sm">Email</p>
-                        <a
-                          href="mailto:raghavahuja2412@gmail.com"
-                          className="text-white hover:gradient-text-2 transition-all duration-300 font-medium"
-                        >
-                          raghavahuja2412@gmail.com
-                        </a>
-                      </div>
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* ── Left Side: Identity Matrix ── */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            
+            {/* Info Chips */}
+            <FadeIn delay={0.2} className="flex flex-col gap-4">
+              
+              {/* Email Chip */}
+              <a href="mailto:raghavahuja2412@gmail.com" className="group">
+                <div className="relative p-[1px] rounded-2xl bg-gradient-to-r from-white/10 to-transparent hover:from-cyan-500/50 hover:to-blue-500/50 transition-all duration-500 overflow-hidden">
+                  <div className="absolute inset-0 bg-cyan-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#0a0e1a]/90 backdrop-blur-xl p-6 rounded-2xl flex items-center gap-6 relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+                      <Mail className="w-5 h-5 text-cyan-400" />
                     </div>
-
-                    <div className="flex items-center space-x-4 group/item hover:scale-105 transition-transform duration-300">
-                      <a
-                        href="https://wa.me/919318475247"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300 cursor-pointer shadow-lg hover:shadow-green-500/25"
-                      >
-                        <WhatsAppIcon className="w-6 h-6 text-white" />
-                      </a>
-                      <div>
-                        <p className="text-gray-400 text-sm">WhatsApp</p>
-                        <a
-                          href="https://wa.me/919318475247"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white hover:gradient-text-3 transition-all duration-300 font-medium"
-                        >
-                          +91 9318475247
-                        </a>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center space-x-4 group/item hover:scale-105 transition-transform duration-300">
-                      <div className="w-12 h-12 gradient-bg-3 rounded-xl flex items-center justify-center group-hover/item:scale-110 transition-transform duration-300">
-                        <MapPin className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-gray-400 text-sm">Location</p>
-                        <span className="text-white font-medium">Delhi, India</span>
-                      </div>
+                    <div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mb-1">Secure Email</div>
+                      <div className="text-slate-200 font-medium tracking-wide group-hover:text-cyan-300 transition-colors">raghavahuja2412@gmail.com</div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick Stats Card */}
-              <Card className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border-white/10 hover:border-blue-400/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <h4 className="text-lg font-medium text-white mb-4 gradient-text">Quick Stats</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold gradient-text-2">3+</div>
-                      <div className="text-gray-400 text-sm">Certificates</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold gradient-text-3">10+</div>
-                      <div className="text-gray-400 text-sm">Technologies</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold gradient-text">3+</div>
-                      <div className="text-gray-400 text-sm">Projects</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold gradient-text-2">24/7</div>
-                      <div className="text-gray-400 text-sm">Available</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </SlideIn>
-
-          <SlideIn direction="right" delay={0.4}>
-            <Card className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 backdrop-blur-sm border-white/10 hover:border-indigo-400/30 transition-all duration-300 group">
-              <CardContent className="p-8">
-                <div className="flex items-center space-x-3 mb-6">
-                  <div className="w-8 h-8 gradient-bg-4 rounded-lg flex items-center justify-center">
-                    <Mail className="w-4 h-4 text-white" />
-                  </div>
-                  <h3 className="text-xl font-medium text-white gradient-text-2">Send Message</h3>
                 </div>
+              </a>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-gray-300 mb-2 block">
-                      Your Name
-                    </Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white focus:border-blue-400 focus:ring-blue-400/20 transition-all duration-300 hover:bg-white/10"
-                      placeholder="Enter your full name"
-                    />
+              {/* WhatsApp Chip */}
+              <a href="https://wa.me/919318475247" target="_blank" rel="noopener noreferrer" className="group">
+                <div className="relative p-[1px] rounded-2xl bg-gradient-to-r from-white/10 to-transparent hover:from-emerald-500/50 hover:to-green-500/50 transition-all duration-500 overflow-hidden">
+                  <div className="absolute inset-0 bg-emerald-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#0a0e1a]/90 backdrop-blur-xl p-6 rounded-2xl flex items-center gap-6 relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(16,185,129,0.2)] group-hover:shadow-[0_0_25px_rgba(16,185,129,0.4)]">
+                      <WhatsAppIcon className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mb-1">Direct Message</div>
+                      <div className="text-slate-200 font-medium tracking-wide group-hover:text-emerald-300 transition-colors">+91 9318475247</div>
+                    </div>
                   </div>
-
-                  <div>
-                    <Label htmlFor="email" className="text-gray-300 mb-2 block">
-                      Email Address
-                    </Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white focus:border-purple-400 focus:ring-purple-400/20 transition-all duration-300 hover:bg-white/10"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="message" className="text-gray-300 mb-2 block">
-                      Your Message
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className="bg-white/5 border-white/20 text-white focus:border-pink-400 focus:ring-pink-400/20 transition-all duration-300 hover:bg-white/10 resize-none"
-                      placeholder="Tell me about your project, ideas, or just say hello!"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full gradient-bg-1 hover:scale-105 transition-all duration-300 text-white border-0 py-3 text-lg font-medium shadow-lg hover:shadow-xl"
-                  >
-                    <Mail className="w-5 h-5 mr-2" />
-                    Send Message
-                  </Button>
-                </form>
-
-                <div className="mt-6 pt-6 border-t border-white/10">
-                  <p className="text-gray-400 text-sm text-center">🚀 Usually responds within 24 hours</p>
                 </div>
-              </CardContent>
-            </Card>
-          </SlideIn>
+              </a>
+
+              {/* Location Chip */}
+              <div className="group cursor-default">
+                <div className="relative p-[1px] rounded-2xl bg-gradient-to-r from-white/10 to-transparent hover:from-violet-500/50 hover:to-purple-500/50 transition-all duration-500 overflow-hidden">
+                  <div className="absolute inset-0 bg-violet-400/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="bg-[#0a0e1a]/90 backdrop-blur-xl p-6 rounded-2xl flex items-center gap-6 relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-[0_0_15px_rgba(139,92,246,0.2)] group-hover:shadow-[0_0_25px_rgba(139,92,246,0.4)]">
+                      <MapPin className="w-5 h-5 text-violet-400" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono mb-1">Current Coordinates</div>
+                      <div className="text-slate-200 font-medium tracking-wide group-hover:text-violet-300 transition-colors">Delhi, India</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </FadeIn>
+
+            {/* Stats Telemetry Dashboard */}
+            <FadeIn delay={0.4}>
+              <div className="p-6 rounded-2xl bg-[#0a0e1a]/50 border border-white/5 backdrop-blur-md">
+                <div className="flex items-center gap-2 text-xs text-slate-500 font-mono uppercase tracking-widest mb-6">
+                  <ActivityIndicator /> Status Telemetry
+                </div>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <div className="text-2xl font-bold text-slate-200 mb-1 flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-cyan-400" /> &lt; 24h
+                    </div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">Response Time</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-200 mb-1 flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400" /> 24/7
+                    </div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">Availability</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-200 mb-1 flex items-center gap-2">
+                      <Cpu className="w-4 h-4 text-violet-400" /> 10+
+                    </div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">Technologies</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-slate-200 mb-1 flex items-center gap-2">
+                      <Rocket className="w-4 h-4 text-amber-400" /> 3+
+                    </div>
+                    <div className="text-[10px] text-slate-500 uppercase tracking-widest font-mono">Major Projects</div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* ── Right Side: Terminal Messaging Console ── */}
+          <div className="lg:col-span-7">
+            <FadeIn delay={0.3} className="h-full">
+              <div className="relative h-full rounded-[2rem] p-[1px] bg-gradient-to-br from-cyan-500/30 via-slate-800/40 to-violet-500/30 shadow-[0_0_50px_rgba(6,182,212,0.1)] group">
+                <div className="bg-[#0a0e1a]/95 backdrop-blur-2xl rounded-[2rem] p-8 md:p-12 h-full relative overflow-hidden flex flex-col">
+                  
+                  {/* Decorative Terminal Header */}
+                  <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-8">
+                    <div className="flex items-center gap-3">
+                      <Terminal className="w-5 h-5 text-cyan-400" />
+                      <span className="text-sm font-mono text-cyan-100 tracking-wider">SECURE_COMMS_LINK</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-rose-500/50" />
+                      <div className="w-3 h-3 rounded-full bg-amber-500/50" />
+                      <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
+                    </div>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-6">
+                    
+                    <div className="relative">
+                      <label htmlFor="name" className="text-[10px] text-slate-400 uppercase tracking-widest font-mono mb-2 block ml-1">
+                        Transmitter Name
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        onFocus={() => setIsFocused('name')}
+                        onBlur={() => setIsFocused(null)}
+                        required
+                        className={`w-full bg-white/[0.03] border-b-2 rounded-t-lg px-4 py-4 text-slate-200 focus:outline-none transition-all duration-300 font-medium
+                          ${isFocused === 'name' ? 'border-cyan-400 bg-white/[0.06] shadow-[0_4px_20px_-10px_rgba(34,211,238,0.5)]' : 'border-white/10'}`}
+                        placeholder="Enter your designation"
+                      />
+                    </div>
+
+                    <div className="relative">
+                      <label htmlFor="email" className="text-[10px] text-slate-400 uppercase tracking-widest font-mono mb-2 block ml-1">
+                        Return Address (Email)
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        onFocus={() => setIsFocused('email')}
+                        onBlur={() => setIsFocused(null)}
+                        required
+                        className={`w-full bg-white/[0.03] border-b-2 rounded-t-lg px-4 py-4 text-slate-200 focus:outline-none transition-all duration-300 font-medium
+                          ${isFocused === 'email' ? 'border-violet-400 bg-white/[0.06] shadow-[0_4px_20px_-10px_rgba(139,92,246,0.5)]' : 'border-white/10'}`}
+                        placeholder="your.email@server.com"
+                      />
+                    </div>
+
+                    <div className="relative flex-1 flex flex-col">
+                      <label htmlFor="message" className="text-[10px] text-slate-400 uppercase tracking-widest font-mono mb-2 block ml-1">
+                        Payload (Message)
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        onFocus={() => setIsFocused('message')}
+                        onBlur={() => setIsFocused(null)}
+                        required
+                        className={`w-full flex-1 min-h-[160px] bg-white/[0.03] border-b-2 rounded-t-lg px-4 py-4 text-slate-200 focus:outline-none transition-all duration-300 font-medium resize-none
+                          ${isFocused === 'message' ? 'border-emerald-400 bg-white/[0.06] shadow-[0_4px_20px_-10px_rgba(16,185,129,0.5)]' : 'border-white/10'}`}
+                        placeholder="Transmit your project details, ideas, or greeting..."
+                      />
+                    </div>
+
+                    <div className="pt-4 mt-auto">
+                      <button
+                        type="submit"
+                        className="w-full relative overflow-hidden group rounded-xl bg-cyan-500/20 border border-cyan-500/50 py-4 text-cyan-100 font-bold tracking-widest transition-all duration-300 hover:bg-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.2)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)]"
+                      >
+                        {/* Button Hover Shine */}
+                        <div className="absolute inset-0 w-1/4 h-full bg-white/20 skew-x-12 -translate-x-[200%] group-hover:animate-[shimmer_1.5s_ease-out_infinite]" />
+                        
+                        <div className="flex items-center justify-center gap-3 relative z-10">
+                          <Send className="w-5 h-5 text-cyan-300" />
+                          <span>TRANSMIT MESSAGE</span>
+                        </div>
+                      </button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
         </div>
       </div>
     </section>
+  )
+}
+
+// Helper component for the pinging dot
+function ActivityIndicator() {
+  return (
+    <span className="relative flex h-2.5 w-2.5">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+    </span>
   )
 }
