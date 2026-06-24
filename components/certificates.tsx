@@ -544,32 +544,23 @@ const baseStars = [
 ];
 // Repeat from -50% to 200% to ensure absolutely flawless left/right boundary looping
 const starPositions = [
-  ...baseStars.map(s => ({ ...s, left: s.left - 50 })),
   ...baseStars,
   ...baseStars.map(s => ({ ...s, left: s.left + 50 })),
   ...baseStars.map(s => ({ ...s, left: s.left + 100 })),
-  ...baseStars.map(s => ({ ...s, left: s.left + 150 })),
-  ...baseStars.map(s => ({ ...s, left: s.left + 200 })),
 ];
 
-const treeBasePositions = [3, 12, 22, 33, 42, 48];
+const treeBasePositions = [3, 22, 42];
 const treePositions = [
-  ...treeBasePositions.map(p => p - 50),
   ...treeBasePositions,
   ...treeBasePositions.map(p => p + 50),
   ...treeBasePositions.map(p => p + 100),
-  ...treeBasePositions.map(p => p + 150),
-  ...treeBasePositions.map(p => p + 200),
 ];
 
-const lightBasePositions = [0, 10, 20, 30, 40];
+const lightBasePositions = [0, 15, 30, 45];
 const lightPositions = [
-  ...lightBasePositions.map(p => p - 50),
   ...lightBasePositions,
   ...lightBasePositions.map(p => p + 50),
   ...lightBasePositions.map(p => p + 100),
-  ...lightBasePositions.map(p => p + 150),
-  200 // Final cap
 ];
 
 const TreeGraphic = ({ index }: { index: number }) => {
@@ -581,26 +572,23 @@ const TreeGraphic = ({ index }: { index: number }) => {
 
   // 40 distinct shades of rich, dark forest greens to make dots look completely unique
   const paths: Record<string, string[]> = {};
-  for (let i = 0; i < 40; i++) {
-    const hue = 110 + rand() * 50;  // 110 to 160
-    const sat = 30 + rand() * 60;   // 30% to 90%
-    const light = 10 + rand() * 25; // 10% to 35% (Base dark/mid greens)
+  for (let i = 0; i < 15; i++) {
+    const hue = 110 + rand() * 50;
+    const sat = 30 + rand() * 60;
+    const light = 10 + rand() * 25;
     paths[`hsl(${hue}, ${sat}%, ${light}%)`] = [];
   }
   const colorKeys = Object.keys(paths);
 
-  // 4500 ultra-tiny distinct dots
-  for (let i = 0; i < 4500; i++) {
+  // 1500 dots (reduced from 4500 for performance)
+  for (let i = 0; i < 1500; i++) {
     const angle = rand() * Math.PI * 2;
-    // Tighter clustering towards center
     const radius = Math.pow(rand(), 0.6) * 165;
     const cx = 150 + Math.cos(angle) * radius;
     const cy = 250 + Math.sin(angle) * radius * 1.5;
 
-    // Very tiny distinct dots
-    const r = 2 + rand() * 5;
+    const r = 3 + rand() * 6;
 
-    // Completely random distinct color assignment (no static highlight!)
     const fill = colorKeys[Math.floor(rand() * colorKeys.length)];
 
     paths[fill].push(`M ${cx - r} ${cy} a ${r} ${r} 0 1 0 ${r * 2} 0 a ${r} ${r} 0 1 0 ${-r * 2} 0`);
@@ -608,7 +596,7 @@ const TreeGraphic = ({ index }: { index: number }) => {
 
   // Wavy brown branches
   const branches = [];
-  for (let b = 0; b < 15; b++) {
+  for (let b = 0; b < 8; b++) {
     const startX = 140 + rand() * 20;
     const startY = 300 + rand() * 150;
 
