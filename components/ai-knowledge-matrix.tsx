@@ -145,6 +145,7 @@ function NeuralMesh({
             stroke="url(#neural-grad)"
             strokeWidth={lit ? 1 : 0.5}
             strokeDasharray="5 5"
+            initial={{ opacity: 0.08 }}
             animate={{ opacity: lit ? 0.35 : 0.08 }}
           />
         )

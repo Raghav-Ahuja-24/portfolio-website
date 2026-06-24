@@ -75,6 +75,7 @@ export function HeroPortrait() {
               height: shard.size * 1.6,
               rotate: shard.rotate,
             }}
+            initial={{ opacity: 0.35, y: 0 }}
             animate={mounted ? { y: [0, -10, 0], opacity: [0.35, 0.75, 0.35] } : false}
             transition={{ duration: 4 + shard.delay, repeat: Infinity, ease: "easeInOut", delay: shard.delay }}
           />
